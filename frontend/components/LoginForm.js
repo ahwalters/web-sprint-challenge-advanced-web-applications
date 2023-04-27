@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import PT from 'prop-types'
 
+//import { login } from './App'
+
 const initialFormValues = {
   username: '',
   password: '',
@@ -17,6 +19,7 @@ export default function LoginForm(props) {
   const onSubmit = evt => {
     evt.preventDefault()
     // ✨ implement
+    props.login(values.username, values.password)
   }
 
   const isDisabled = () => {
@@ -24,6 +27,9 @@ export default function LoginForm(props) {
     // Trimmed username must be >= 3, and
     // trimmed password must be >= 8 for
     // the button to become enabled
+    if (values.username.trim().length >=3 && values.password.trim().length >=8){
+      return false
+    } else return true;
   }
 
   return (
